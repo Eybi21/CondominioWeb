@@ -19,7 +19,7 @@ import javax.faces.context.FacesContext;
 @ManagedBean(name = "bkn_direccion")
 public class Direccionamiento implements Serializable {
         
-        private String puerto = "8089";
+        private String puerto = "8080";
 
          public void inicioLogin() {
 
