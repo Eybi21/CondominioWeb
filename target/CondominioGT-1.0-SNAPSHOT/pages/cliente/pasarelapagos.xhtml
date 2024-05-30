@@ -99,11 +99,10 @@
                 color: ghostwhite;
             }
             .ui-button .ui-button-text {
-
-            }
-            .ui-button .ui-button-text:hover {
                 display: block;
                 line-height: normal;
+            }
+            .ui-button .ui-button-text:hover {
                 background: #dee2e6;
                 border-radius: 20px;
             }
@@ -121,24 +120,21 @@
                 line-height: normal!important;
                 background: #34495e!important;
                 border-radius: 20px!important;
+                color: white;
+                cursor: pointer;
             }
-
         </style>
-
     </h:head>
     <h:body>
         <div class="container">
             <div class="sidebar">
                 <h2>Prados La Esperanza</h2>
-                <h:form>
+                 <h:form>
                     <p:menu>
                         <p:menuitem value="Pagos" actionListener="#{bkn_direccion.pasarelaPagos()}" />
-                        <p:menuitem value="Reportes" actionListener="#{bkn_direccion.controlReportes()}" />
-                        <p:menuitem value="Propiedades" actionListener="#{bkn_direccion.propiedades()}" />
-                        <p:menuitem value="Estado de cuenta" actionListener="#{bkn_direccion.estadoCuenta()}" />
-                        <p:menuitem value="Mensajes" url="#" />
-                        <p:menuitem value="Eventos" url="#" />
-                        <p:menuitem value="Reservas" url="#" />
+                        <p:menuitem value="Reportes" actionListener="#{bkn_direccion.reportesclientes()}" />
+                        <p:menuitem value="Estado de cuenta" actionListener="#{bkn_direccion.cuentacliente()}" />
+                        <p:menuitem value="Anuncios" actionListener="#{bkn_direccion.inicioCliente()}"/>
                     </p:menu>
                 </h:form>
             </div>
@@ -147,13 +143,6 @@
                     <div class="logo">
                         <p:graphicImage value="/resources/img/Condominio.png" style="width: 100px; height: 80px;" />
                     </div>
-                     <!-- Menú para seleccionar el tipo de pago -->
-                    <p:selectOneMenu id="tipoPago1" required="true" label="Tipo de Pago">
-                        <f:selectItem itemLabel="Seleccione el tipo de pago" itemValue="" />
-                        <f:selectItem itemLabel="Mensualidad de Lote" itemValue="Mensualidad de Lote" />
-                        <f:selectItem itemLabel="Mensualidad de Mantenimiento" itemValue="Mensualidad de Mantenimiento" />
-                        <f:selectItem itemLabel="Mensualidad de Servicios" itemValue="Mensualidad de Servicios" />
-                    </p:selectOneMenu>
                     <div class="profile">
                         <p:graphicImage value="/resources/img/usuario.png" style="width: 40px; height: 40px;" />
                         <div>
@@ -168,26 +157,30 @@
                         </div>
                     </div>
                 </div>
-                <div  class="content">
+                <div class="content">
                     <h1>PAGOS</h1>
-                    <div class="background">
-                <div class="form-container">
-                    <div class="form-header">
-                      <div class="title">Llenar formulario</div>
-                    </div>
+                    <div class="table-container">
+                        <h:form>
+                            <!-- Menú para seleccionar el tipo de pago -->
+                            <p:selectOneMenu id="tipoPago1" required="true" label="Tipo de Pago">
+                                <f:selectItem itemLabel="Seleccione el tipo de pago" itemValue="" />
+                                <f:selectItem itemLabel="Mensualidad de Lote" itemValue="Mensualidad de Lote" />
+                                <f:selectItem itemLabel="Mensualidad de Mantenimiento" itemValue="Mensualidad de Mantenimiento" />
+                                <f:selectItem itemLabel="Mensualidad de Servicios" itemValue="Mensualidad de Servicios" />
+                            </p:selectOneMenu>
 
-                    <!-- Formulario para realizar pagos -->
-                    <p:inputText id="txtNumeroTarjeta" placeholder="Número de tarjeta" required="true" label="Número de Tarjeta" style="width: 100%;" />
-                    <p:password id="txtVigencia" placeholder="Vigencia" label="Vigencia" redisplay="true" required="true" style="width: 100%;" />
-                    <p:inputText id="txtCvv" placeholder="CVV" required="true" label="CVV" style="width: 100%;" />
-                    <p:inputText id="txtCantidad" placeholder="Cantidad" required="true" label="Cantidad" style="width: 100%;" />
-                    
-                    <!-- Botón para realizar el pago -->
-                    <p:commandButton value="Realizar Pago" style="width: 100%;" />
-                </div>
-            </div>
-                </div>
-            </div>
-        </div>
+                            <!-- Formulario para realizar pagos -->
+                            <p:inputText id="txtNumeroTarjeta" placeholder="Número de tarjeta" required="true" label="Número de Tarjeta" style="width: 100%;" />
+                            <p:password id="txtVigencia" placeholder="Vigencia" label="Vigencia" redisplay="true" required="true" style="width: 100%;" />
+                            <p:inputText id="txtCvv" placeholder="CVV" required="true" label="CVV" style="width: 100%;" />
+                            <p:inputText id="txtCantidad" placeholder="Cantidad" required="true" label="Cantidad" style="width: 100%;" />
+                            
+                            <!-- Botón para realizar el pago -->
+                            <p:commandButton value="Realizar Pago" style="width: 100%;" />
+                        </h:form>
+                    </div> <!-- Cierre de div .table-container -->
+                </div> <!-- Cierre de div .content -->
+            </div> <!-- Cierre de div .main-content -->
+        </div> <!-- Cierre de div .container -->
     </h:body>
 </html>

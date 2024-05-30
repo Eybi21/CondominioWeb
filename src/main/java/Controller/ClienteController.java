@@ -4,6 +4,16 @@
  */
 package Controller;
 
+import DAO.ConsultasAdmin;
+import Models.Anuncio;
+import Models.ControlReportes;
+import Models.Cuenta;
+import Models.Propiedad;
+import Models.RegistroPropiedad;
+import Models.Reporte;
+import java.io.Serializable;
+import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 /**
@@ -12,9 +22,9 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean(name = "bkn_cliente")
 
-public class ClienteController {
-    
-    
-    
-    
+public class ClienteController implements Serializable {
+
+
+   
+
 }

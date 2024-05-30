@@ -1,4 +1,16 @@
+DAO\ConsultasManto.class
+Models\Reporte.class
+DAO\ConsultasDAO.class
+Models\Propiedad.class
+Controller\inicioController.class
+Models\RegistroPropiedad.class
 Models\Anuncio.class
+Controller\Direccionamiento.class
+Controller\MantoController.class
+DAO\ConsultasAdmin.class
 Models\Usuario.class
+Controller\AdminController.class
+Controller\ClienteController.class
 Models\ControlReportes.class
 Models\Cuenta.class
+DAO\ConexionDAO.class

@@ -87,20 +87,23 @@
                 border-radius: 10px;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }
+
             body .ui-menu {
                 padding: .25rem 0;
                 background: #2c3e50;
                 border: 1px solid #dee2e6;
                 border-radius: 4px;
             }
+
             body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link .ui-menuitem-text {
                 float: none;
                 vertical-align: middle;
                 color: ghostwhite;
             }
-            .ui-button .ui-button-text {
 
+            .ui-button .ui-button-text {
             }
+
             .ui-button .ui-button-text:hover {
                 display: block;
                 line-height: normal;
@@ -116,11 +119,22 @@
                 color: darkblue;
             }
 
+            .titulos {
+                margin: 20px;
+                font-size: 24px; /* Cambia 'size' por 'font-size' y ajusta el tamaño según sea necesario */
+                padding: 5px;
+                color: #ffffff;
+            }
+
             #salir {
                 display: block!important;
                 line-height: normal!important;
                 background: #34495e!important;
                 border-radius: 20px!important;
+            }
+
+            .espaciador {
+                margin-top: 20px; /* Ajusta el valor según tus necesidades */
             }
 
         </style>
@@ -130,59 +144,63 @@
         <div class="container">
             <div class="sidebar">
                 <h2>Prados La Esperanza</h2>
-                <h:form>
+             <h:form>
                     <p:menu>
                         <p:menuitem value="Pagos" actionListener="#{bkn_direccion.pasarelaPagos()}" />
-                        <p:menuitem value="Reportes" actionListener="#{bkn_direccion.controlReportes()}" />
-                        <p:menuitem value="Propiedades" actionListener="#{bkn_direccion.propiedades()}" />
-                        <p:menuitem value="Estado de cuenta" actionListener="#{bkn_direccion.estadoCuenta()}" />
-                        <p:menuitem value="Mensajes" url="#" />
-                        <p:menuitem value="Eventos" url="#" />
-                        <p:menuitem value="Reservas" url="#" />
+                        <p:menuitem value="Reportes" actionListener="#{bkn_direccion.reportesclientes()}" />
+                        <p:menuitem value="Estado de cuenta" actionListener="#{bkn_direccion.cuentacliente()}" />
+                        <p:menuitem value="Anuncios" actionListener="#{bkn_direccion.inicioCliente()}"/>
                     </p:menu>
                 </h:form>
             </div>
             <div class="main-content">
                 <div class="header">
+
                     <div class="logo">
                         <p:graphicImage value="/resources/img/Condominio.png" style="width: 100px; height: 80px;" />
                     </div>
-                    
+                    <h:outputText id="titulo" value="Reportes Incidentes" styleClass="titulos"/>
                     <div class="profile">
                         <p:graphicImage value="/resources/img/usuario.png" style="width: 40px; height: 40px;" />
+
                         <div>
                             <h:form>
                                 <div>
                                     <h:outputText id="user" value="Eybi Gúzman" styleClass="nombre-usuario"/>
+
                                 </div>
                                 <div>
-                                    <p:commandButton id="salir" value="Salir" action="#{bkn_direccion.inicioLogin()}" style="margin:5px; background: none; border: none; padding: 1px; color: white; cursor: pointer;"/>
+                                    <p:commandButton id="salir" value="Salir" action="#{bkn_direccion.pasarelaPagos()}" style="margin:5px; background: none; border: none; padding: 1px; color: white; cursor: pointer;"/>
                                 </div>
                             </h:form>
                         </div>
                     </div>
                 </div>
-                 <div class="content">
-                  <h1>Realizar Reporte</h1>
-                  <h:dataTable>
-                  <h:form>
+                <div  class="content">
+                    <h:form id="formIncidente" enctype="multipart/form-data">
 
-                   <p:column headerText="DESCRIPCION" sortBy="#{anuncio.descripcion}" filterBy="#{anuncio.descripcion}">
-                   <h:outputText value="#{anuncio.descripcion}"/>
-                   </p:column>
-                   <p:column headerText="PUBLICACION" sortBy="#{anuncio.fecha_publicacion}" filterBy="#{anuncio.fecha_publicacion}">
-                   <h:outputText value="#{anuncio.fecha_publicacion}"/>
-                   </p:column>
-                   <p:column headerText="VENCIMIENTO" sortBy="#{anuncio.fecha_vencimiento}" filterBy="#{anuncio.fecha_vencimiento}">
-                   <h:outputText value="#{anuncio.fecha_vencimiento}"/>
-                   </p:column>
-                  </h:form>
-                  </h:dataTable>
-                 </div>
-                   
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputLabel for="descripcion" value="Descripción:" />
+                            <p:inputTextarea id="descripcion" value="#{ReporteIncidente.descripcion}" rows="6" cols="30" />
+
+                            <h:outputLabel for="fecha" value="Fecha Creacion:" />
+                            <p:inputText id="fecha" value="#{ReporteIncidente.fecha}" disabled="true" />
+
+                            <h:outputLabel for="reportadoPor" value="Reportado por:" />
+                            <p:inputText id="reportadoPor" value="#{ReporteIncidente.reportadoPor}" />
+
+                            <h:outputLabel for="imagen" value="Subir Imagen:" />
+                            <p:fileUpload id="imagen" value="#{ReporteIncidente.file}" mode="simple" skinSimple="true" label="Seleccionar" />
+
+                            <h:outputLabel for="estado" value="Estado:" />
+
+                            <h:panelGroup styleClass="espaciador">
+                                <h:commandButton value="Enviar" action="#{ReporteIncidente.enviar}" />
+                            </h:panelGroup>
+                        </h:panelGrid>
+                    </h:form>
                 </div>
             </div>
-                
-          </h:body>
-         </html>
-       
+        </div>
+    </h:body>
+</html>
