@@ -10,6 +10,7 @@ import Models.Cuenta;
 import Models.RegistroPropiedad;
 import Models.Usuario;
 import Models.ControlReportes;
+import Models.Propiedad;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -167,7 +168,49 @@ public class ConsultasAdmin {
             }
         }
 
-        return registros;   
+        return registros;
+    }
+
+    public List<Propiedad> consultarPropiedades() throws Exception {
+        List<Propiedad> propiedades = new ArrayList<Propiedad>();
+        String query = "SELECT id_propiedad, direccion, tipo_propiedad, precio, area, descripcion, habitacion, baños FROM propiedad";
+
+        try {
+
+            Statement s = con.conexionMysql().createStatement();
+            ResultSet r = s.executeQuery(query);
+
+            while (r.next()) {
+                Propiedad datos = new Propiedad();
+
+                datos.setId_propiedad(r.getLong("id_propiedad"));
+                datos.setDireccion(r.getString("direccion"));
+                datos.setTipo_propiedad(r.getString("tipo_propiedad"));
+                datos.setPrecio(r.getFloat("precio"));
+                datos.setArea(r.getString("area"));
+                datos.setDescripcion("descripcion");
+                datos.setHabitaciones(r.getInt("habitacion"));
+                datos.setBaños(r.getInt("baños"));
+                
+                propiedades.add(datos);
+
+            }
+            System.out.println("PROPIEADES: " + query);
+            System.out.println("EXITO");
+        } catch (Exception e) {
+            System.out.println("Error al consultar propiedades: " + query);
+        } finally {
+            if (con != null) {
+                try {
+                    con.conexionMysql().close();
+                    System.out.println("Cierre de conexion exitosa");
+                } catch (SQLException ex) {
+                    System.out.println("Error al cerrar conexion");
+                }
+            }
+        }
+        System.out.println("PROPIEADES: " + query);
+        return propiedades;
     }
 
 }

@@ -161,17 +161,29 @@
                 </div>
                 <div  class="content">
                     <h1 style="text-align: center">PROPIEDADES</h1>
-                    <p:dataTable id="tblDatos" widgetVar="dtProducts" var="registro" value="#{bkn_Admin.listaRegistro}"
-                                 reflow="true" styleClass="products-table" selection="#{bkn_Admin.listaRegistro}"
+                    <p:dataTable id="tblDatos" widgetVar="dtProducts" var="propiedad" value="#{bkn_Admin.listaPropiedades}"
+                                 reflow="true" styleClass="products-table" selection="#{bkn_Admin.listaPropiedades}"
                                  editable="true">
-                        <p:column headerText="REGISTRO" sortBy="" filterBy="">
-                            <h:outputText value="#{registro.id_registro}"/>
+                        <p:column headerText="NO" sortBy="" filterBy="">
+                            <h:outputText value="#{propiedad.id_propiedad}"/>
                         </p:column>
-                        <p:column headerText="PERSONA" sortBy="" filterBy="">
-                            <h:outputText value="#{registro.persona_id}"/>
+                        <p:column headerText="DIRECCION" sortBy="" filterBy="">
+                            <h:outputText value="#{propiedad.direccion}"/>
                         </p:column>
-                        <p:column headerText="PROPIEDAD" sortBy="" filterBy="">
-                            <h:outputText value="#{registro.propiedad_id}"/>
+                        <p:column headerText="PRECIO" sortBy="" filterBy="">
+                            <h:outputText value="#{propiedad.precio}"/>
+                        </p:column>
+                        <p:column headerText="AREA" sortBy="" filterBy="">
+                            <h:outputText value="#{propiedad.area}"/>
+                        </p:column>
+                        <p:column headerText="DESCRIPCION" sortBy="" filterBy="">
+                            <h:outputText value="#{propiedad.descripcion}"/>
+                        </p:column>
+                        <p:column headerText="HABITACIONES" sortBy="" filterBy="">
+                            <h:outputText value="#{propiedad.habitaciones}"/>
+                        </p:column>
+                        <p:column headerText="PRECIO" sortBy="" filterBy="">
+                            <h:outputText value="#{propiedad.precio}"/>
                         </p:column>
                     </p:dataTable>  
                 </div>

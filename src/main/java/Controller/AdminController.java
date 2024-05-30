@@ -42,6 +42,7 @@ public class AdminController implements Serializable {
         listarCuentas();
         listarReportes();
         listarRegistros();
+        listarPropiedades();
 
     }
 
@@ -91,6 +92,35 @@ public class AdminController implements Serializable {
             System.out.println("Error al listar registros");
         }
 
+    }
+
+    public void listarPropiedades() {
+        ConsultasAdmin consulta = new ConsultasAdmin();
+
+        try {
+            setListaPropiedades(consulta.consultarPropiedades());
+            System.out.println("LISTA PROPIEDADES: "+listaPropiedades.size());
+        } catch (Exception e) {
+            System.out.println("Error al listar propiedades");
+        }
+    }
+    
+    public void buscar(){
+        
+    }
+
+    /**
+     * @return the listaPropiedades
+     */
+    public List<Propiedad> getListaPropiedades() {
+        return listaPropiedades;
+    }
+
+    /**
+     * @param listaPropiedades the listaPropiedades to set
+     */
+    public void setListaPropiedades(List<Propiedad> listaPropiedades) {
+        this.listaPropiedades = listaPropiedades;
     }
 
     /**
